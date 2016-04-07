@@ -31,7 +31,7 @@ if (!is_dir($CONF_DIR)) {
 
 // configuration defaults
 $DEFAULTS = array(
-  'MOUNT_PATH' => '/ws/geomag',
+  'MOUNT_PATH' => '/ws/edge',
   'EDGE_WS_VERSION' => '0.1.0',
   'EDGE_HOST' => 'cwbpub.cr.usgs.gov',
   'EDGE_PORT' => '2060',

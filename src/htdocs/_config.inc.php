@@ -21,20 +21,4 @@ $SITE_SITENAV =
 
 $HEAD = $THEME_CSS .
     // page head content
-    ($HEAD ? $HEAD : '') .
-
-    // description meta
-    '<meta name="description" content="' .
-        'USGS Earthquake Hazards Program, responsible for' .
-        ' monitoring, reporting, and researching earthquakes and' .
-        ' earthquake hazards' .
-    '"/>' .
-
-    // keywords meta
-    '<meta name="keywords" content="' .
-        'aftershock,earthquake,epicenter,fault,foreshock,geologist,' .
-        'geophysics,hazard,hypocenter,intensity,intensity scale,magnitude,' .
-        'magnitude scale,mercalli,plate,richter,seismic,seismicity,seismogram,' .
-        'seismograph,seismologist,seismology,subduction,tectonics,tsunami,quake,' .
-        'sismologico,sismologia' .
-    '"/>';
+    ($HEAD ? $HEAD : '');

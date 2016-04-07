@@ -5,11 +5,12 @@ Web service for geomagnetism data stored in the EDGE.
 (via the waveserver GETSCNLRAW interface)
 
 # Getting started
-- Make sure `node`, `npm`, and `grunt` are installed.
+- Make sure `node`, `npm`, and `grunt-cli` are installed.
 - Make sure the project has been configured using pre-install, use the default values:
 ```
 cd geomag-edge-ws
 src/lib/pre-install
+npm install
 ```
 - Use grunt to start a local development server:
 ```
