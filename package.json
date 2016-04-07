@@ -1,0 +1,52 @@
+{
+  "name": "geomag-edge-ws",
+  "version": "0.1.0",
+  "description": "Geomag timeseries web service",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/usgs/geomag-edge-ws.git"
+  },
+  "keywords": [
+    "usgs",
+    "edge",
+    "cwb"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/usgs/geomag-edge-ws/issues"
+  },
+  "homepage": "https://github.com/usgs/geomag-edge-ws",
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "chai": "^3.2.0",
+    "cssnano": "^3.1.0",
+    "gateway": "^1.0.0",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^4.0.1",
+    "grunt-concurrent": "^2.0.3",
+    "grunt-connect-proxy": "^0.2.0",
+    "grunt-connect-rewrite": "^0.2.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "^0.11.2",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "^0.9.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-phantomjs": "^2.0.0",
+    "grunt-postcss": "^0.6.0",
+    "hazdev-template": "usgs/hazdev-template",
+    "hazdev-webutils": "usgs/hazdev-webutils",
+    "ini": "^1.3.4",
+    "mocha": "^2.3.2",
+    "phantomjs": "^1.9.18",
+    "postcss-import": "^7.0.0",
+    "precss": "^1.1.3",
+    "sinon": "^1.16.1"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

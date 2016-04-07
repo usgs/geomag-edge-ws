@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "request": "/ws/edge/?starttime=2015-07-01T00:01:00Z&endtime=2015-07-01T00:05:00Z&station=BOU&network=NT&channel=MVH&location=R0",
+    "submitted": "2015-09-30T20:34:30Z",
+    "version": "0.1"
+  },
+  "response": {
+    "station": "BOU",
+    "channel": "MVH",
+    "network": "NT",
+    "location": "R0",
+    "startTime": "2015-07-01T00:01:00Z",
+    "endTime": "2015-07-01T00:05:00Z",
+    "samplingRate": 0.016666666666667,
+    "delta": 60,
+    "flag": "F",
+    "data": [
+      20858265,
+      20858721,
+      20858888,
+      20858799,
+      20858849
+    ]
+  }
+}
