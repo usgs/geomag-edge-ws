@@ -81,6 +81,8 @@ class JsonOutputFormat {
       'times' => $times,
       'values' => $values
     );
+
+    header('Content-Type: application/json');
     echo str_replace('\/', '/', JsonOutputFormat::safe_json_encode($response));
   }
 
