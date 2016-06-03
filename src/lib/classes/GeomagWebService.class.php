@@ -182,7 +182,7 @@ class GeomagWebService {
         $channel = $prefix . 'GD';
         break;
       default:
-        if (preg_match('/^[A-Z]{3}$/', $element)) {
+        if (preg_match('/^[A-Z][A-Z0-9]{2}$/', $element)) {
           // seems like an edge channel code
           $channel = $element;
         } else {
