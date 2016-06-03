@@ -7,6 +7,7 @@
       "id": "BDT",
       "properties": {
         "station_name": "Boulder Test",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -22,6 +23,7 @@
       "id": "BOU",
       "properties": {
         "station_name": "Boulder",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -37,6 +39,7 @@
       "id": "TST",
       "properties": {
         "station_name": "Boulder Test (ObsRIO)",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -52,6 +55,7 @@
       "id": "BRW",
       "properties": {
         "station_name": "Barrow",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -67,6 +71,7 @@
       "id": "BRT",
       "properties": {
         "station_name": "Barrow Test",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -82,6 +87,7 @@
       "id": "BSL",
       "properties": {
         "station_name": "Stennis Space Center",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -97,6 +103,7 @@
       "id": "CMO",
       "properties": {
         "station_name": "College",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -112,6 +119,7 @@
       "id": "DED",
       "properties": {
         "station_name": "Deadhorse",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -127,6 +135,7 @@
       "id": "DHT",
       "properties": {
         "station_name": "Deadhorse Test",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -142,6 +151,7 @@
       "id": "FRD",
       "properties": {
         "station_name": "Fredericksburg",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -157,6 +167,7 @@
       "id": "FRN",
       "properties": {
         "station_name": "Fresno",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -172,6 +183,7 @@
       "id": "GUA",
       "properties": {
         "station_name": "Guam",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -187,6 +199,7 @@
       "id": "HON",
       "properties": {
         "station_name": "Honolulu",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -202,6 +215,7 @@
       "id": "NEW",
       "properties": {
         "station_name": "Newport",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -217,6 +231,7 @@
       "id": "SHU",
       "properties": {
         "station_name": "Shumagin",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -232,6 +247,7 @@
       "id": "SIT",
       "properties": {
         "station_name": "Sitka",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -247,6 +263,7 @@
       "id": "SJG",
       "properties": {
         "station_name": "San Juan",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -262,6 +279,7 @@
       "id": "TUC",
       "properties": {
         "station_name": "Tucson",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -277,6 +295,7 @@
       "id": "USGS",
       "properties": {
         "station_name": "USGS",
+        "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -294,6 +313,7 @@
       "id": "BLC",
       "properties": {
         "station_name": "Bake Lake",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -309,6 +329,7 @@
       "id": "BRD",
       "properties": {
         "station_name": "Brandon",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -324,6 +345,7 @@
       "id": "CBB",
       "properties": {
         "station_name": "Cambridge Bay",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -339,6 +361,7 @@
       "id": "EUA",
       "properties": {
         "station_name": "Eureka",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -354,6 +377,7 @@
       "id": "FCC",
       "properties": {
         "station_name": "Fort Churchill",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -369,6 +393,7 @@
       "id": "IQA",
       "properties": {
         "station_name": "Iqaluit",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -384,6 +409,7 @@
       "id": "MEA",
       "properties": {
         "station_name": "Meanook",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -399,6 +425,7 @@
       "id": "OTT",
       "properties": {
         "station_name": "Ottawa",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -414,6 +441,7 @@
       "id": "RES",
       "properties": {
         "station_name": "Resolute Bay",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -429,6 +457,7 @@
       "id": "SNK",
       "properties": {
         "station_name": "Sanikiluaq",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -444,6 +473,7 @@
       "id": "STJ",
       "properties": {
         "station_name": "Saint John's",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -459,6 +489,7 @@
       "id": "VIC",
       "properties": {
         "station_name": "Victoria",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -474,6 +505,7 @@
       "id": "YKC",
       "properties": {
         "station_name": "Yellow Knife",
+        "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
         "sensor_sampling_rate": 0.01,
@@ -491,6 +523,7 @@
       "id": "HAD",
       "properties": {
         "station_name": "Hartland",
+        "agency": "BGS",
         "agency_name": "British Geological Survey (BGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
@@ -508,7 +541,8 @@
       "id": "HER",
       "properties": {
         "station_name": "Hermanus",
-        "agency_name": "National Research Foundation",
+        "agency": "SANSA",
+        "agency_name": "South African National Space Agency (SANSA)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
         "declination_base": 0
