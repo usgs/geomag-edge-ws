@@ -7,7 +7,7 @@
       "id": "D",
       "properties": {
         "name": "Declination",
-        "units": "0.1'"
+        "units": "0.1′"
       },
       "geometry": null
     },
