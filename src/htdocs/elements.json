@@ -4,10 +4,10 @@
   "features": [
     {
       "type": "Feature",
-      "id": "H",
+      "id": "D",
       "properties": {
-        "name": "Observatory North Component",
-        "units": "nT"
+        "name": "Declination",
+        "units": "0.1'"
       },
       "geometry": null
     },
@@ -22,18 +22,27 @@
     },
     {
       "type": "Feature",
-      "id": "Z",
+      "id": "F",
       "properties": {
-        "name": "Vertical Magnitude",
+        "name": "Total Field Magnitude",
         "units": "nT"
       },
       "geometry": null
     },
     {
       "type": "Feature",
-      "id": "F",
+      "id": "G",
       "properties": {
-        "name": "Total field Magnitude",
+        "name": "Delta F",
+        "units": "nT"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "H",
+      "properties": {
+        "name": "Observatory North Component",
         "units": "nT"
       },
       "geometry": null
@@ -58,55 +67,20 @@
     },
     {
       "type": "Feature",
-      "id": "D",
+      "id": "Z",
       "properties": {
-        "name": "Declination",
-        "units": "0.1'"
-      },
-      "geometry": null
-    },
-    {
-      "type": "Feature",
-      "id": "G",
-      "properties": {
-        "name": "DeltaF",
+        "name": "Vertical Magnitude",
         "units": "nT"
       },
       "geometry": null
     },
+
     {
       "type": "Feature",
-      "id": "UK1",
+      "id": "MSD",
       "properties": {
-        "name": "Electronics Temp",
-        "units": "°C"
-      },
-      "geometry": null
-    },
-    {
-      "type": "Feature",
-      "id": "UK2",
-      "properties": {
-        "name": "Fluxgate Temp",
-        "units": "°C"
-      },
-      "geometry": null
-    },
-    {
-      "type": "Feature",
-      "id": "UK3",
-      "properties": {
-        "name": "Proton Temp",
-        "units": "°C"
-      },
-      "geometry": null
-    },
-    {
-      "type": "Feature",
-      "id": "UK5",
-      "properties": {
-        "name": "Outside Temp",
-        "units": "°C"
+        "name": "Disturbance",
+        "units": "nT"
       },
       "geometry": null
     },
@@ -130,10 +104,37 @@
     },
     {
       "type": "Feature",
-      "id": "MSD",
+      "id": "UK1",
       "properties": {
-        "name": "Disturbance",
-        "units": "nT"
+        "name": "Electronics Temperature",
+        "units": "°C"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "UK2",
+      "properties": {
+        "name": "Fluxgate Temperature",
+        "units": "°C"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "UK3",
+      "properties": {
+        "name": "Proton Temperature",
+        "units": "°C"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "UK4",
+      "properties": {
+        "name": "Outside Temperature",
+        "units": "°C"
       },
       "geometry": null
     }
