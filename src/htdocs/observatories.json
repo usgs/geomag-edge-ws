@@ -6,7 +6,7 @@
       "type": "Feature",
       "id": "BDT",
       "properties": {
-        "station_name": "Boulder Test",
+        "name": "Boulder Test",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -22,7 +22,7 @@
       "type": "Feature",
       "id": "BOU",
       "properties": {
-        "station_name": "Boulder",
+        "name": "Boulder",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -38,7 +38,7 @@
       "type": "Feature",
       "id": "TST",
       "properties": {
-        "station_name": "Boulder Test (ObsRIO)",
+        "name": "Boulder Test (ObsRIO)",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -54,7 +54,7 @@
       "type": "Feature",
       "id": "BRW",
       "properties": {
-        "station_name": "Barrow",
+        "name": "Barrow",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -70,7 +70,7 @@
       "type": "Feature",
       "id": "BRT",
       "properties": {
-        "station_name": "Barrow Test",
+        "name": "Barrow Test",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -86,7 +86,7 @@
       "type": "Feature",
       "id": "BSL",
       "properties": {
-        "station_name": "Stennis Space Center",
+        "name": "Stennis Space Center",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -102,7 +102,7 @@
       "type": "Feature",
       "id": "CMO",
       "properties": {
-        "station_name": "College",
+        "name": "College",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -118,7 +118,7 @@
       "type": "Feature",
       "id": "DED",
       "properties": {
-        "station_name": "Deadhorse",
+        "name": "Deadhorse",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -134,7 +134,7 @@
       "type": "Feature",
       "id": "DHT",
       "properties": {
-        "station_name": "Deadhorse Test",
+        "name": "Deadhorse Test",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -150,7 +150,7 @@
       "type": "Feature",
       "id": "FRD",
       "properties": {
-        "station_name": "Fredericksburg",
+        "name": "Fredericksburg",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -166,7 +166,7 @@
       "type": "Feature",
       "id": "FRN",
       "properties": {
-        "station_name": "Fresno",
+        "name": "Fresno",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -182,7 +182,7 @@
       "type": "Feature",
       "id": "GUA",
       "properties": {
-        "station_name": "Guam",
+        "name": "Guam",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -198,7 +198,7 @@
       "type": "Feature",
       "id": "HON",
       "properties": {
-        "station_name": "Honolulu",
+        "name": "Honolulu",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -214,7 +214,7 @@
       "type": "Feature",
       "id": "NEW",
       "properties": {
-        "station_name": "Newport",
+        "name": "Newport",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -230,7 +230,7 @@
       "type": "Feature",
       "id": "SHU",
       "properties": {
-        "station_name": "Shumagin",
+        "name": "Shumagin",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -246,7 +246,7 @@
       "type": "Feature",
       "id": "SIT",
       "properties": {
-        "station_name": "Sitka",
+        "name": "Sitka",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -262,7 +262,7 @@
       "type": "Feature",
       "id": "SJG",
       "properties": {
-        "station_name": "San Juan",
+        "name": "San Juan",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -278,7 +278,7 @@
       "type": "Feature",
       "id": "TUC",
       "properties": {
-        "station_name": "Tucson",
+        "name": "Tucson",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -294,7 +294,7 @@
       "type": "Feature",
       "id": "USGS",
       "properties": {
-        "station_name": "USGS",
+        "name": "USGS",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -312,7 +312,7 @@
       "type": "Feature",
       "id": "BLC",
       "properties": {
-        "station_name": "Bake Lake",
+        "name": "Bake Lake",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -328,7 +328,7 @@
       "type": "Feature",
       "id": "BRD",
       "properties": {
-        "station_name": "Brandon",
+        "name": "Brandon",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -344,7 +344,7 @@
       "type": "Feature",
       "id": "CBB",
       "properties": {
-        "station_name": "Cambridge Bay",
+        "name": "Cambridge Bay",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -360,7 +360,7 @@
       "type": "Feature",
       "id": "EUA",
       "properties": {
-        "station_name": "Eureka",
+        "name": "Eureka",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -376,7 +376,7 @@
       "type": "Feature",
       "id": "FCC",
       "properties": {
-        "station_name": "Fort Churchill",
+        "name": "Fort Churchill",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -392,7 +392,7 @@
       "type": "Feature",
       "id": "IQA",
       "properties": {
-        "station_name": "Iqaluit",
+        "name": "Iqaluit",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -408,7 +408,7 @@
       "type": "Feature",
       "id": "MEA",
       "properties": {
-        "station_name": "Meanook",
+        "name": "Meanook",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -424,7 +424,7 @@
       "type": "Feature",
       "id": "OTT",
       "properties": {
-        "station_name": "Ottawa",
+        "name": "Ottawa",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -440,7 +440,7 @@
       "type": "Feature",
       "id": "RES",
       "properties": {
-        "station_name": "Resolute Bay",
+        "name": "Resolute Bay",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -456,7 +456,7 @@
       "type": "Feature",
       "id": "SNK",
       "properties": {
-        "station_name": "Sanikiluaq",
+        "name": "Sanikiluaq",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -472,7 +472,7 @@
       "type": "Feature",
       "id": "STJ",
       "properties": {
-        "station_name": "Saint John's",
+        "name": "Saint John's",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -488,7 +488,7 @@
       "type": "Feature",
       "id": "VIC",
       "properties": {
-        "station_name": "Victoria",
+        "name": "Victoria",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -504,7 +504,7 @@
       "type": "Feature",
       "id": "YKC",
       "properties": {
-        "station_name": "Yellow Knife",
+        "name": "Yellow Knife",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -522,7 +522,7 @@
       "type": "Feature",
       "id": "HAD",
       "properties": {
-        "station_name": "Hartland",
+        "name": "Hartland",
         "agency": "BGS",
         "agency_name": "British Geological Survey (BGS)",
         "sensor_orientation": "HDZF",
@@ -540,7 +540,7 @@
       "type": "Feature",
       "id": "HER",
       "properties": {
-        "station_name": "Hermanus",
+        "name": "Hermanus",
         "agency": "SANSA",
         "agency_name": "South African National Space Agency (SANSA)",
         "sensor_orientation": "HDZF",
