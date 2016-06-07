@@ -4,10 +4,10 @@
   "features": [
     {
       "type": "Feature",
-      "id": "D",
+      "id": "H",
       "properties": {
-        "name": "Declination",
-        "units": "0.1′"
+        "name": "Observatory North Component",
+        "units": "nT"
       },
       "geometry": null
     },
@@ -16,6 +16,24 @@
       "id": "E",
       "properties": {
         "name": "Observatory East Component",
+        "units": "nT"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "D",
+      "properties": {
+        "name": "Declination",
+        "units": "dam"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "Z",
+      "properties": {
+        "name": "Vertical Magnitude",
         "units": "nT"
       },
       "geometry": null
@@ -33,16 +51,8 @@
       "type": "Feature",
       "id": "G",
       "properties": {
+        "abbreviation": "ΔF",
         "name": "Delta F",
-        "units": "nT"
-      },
-      "geometry": null
-    },
-    {
-      "type": "Feature",
-      "id": "H",
-      "properties": {
-        "name": "Observatory North Component",
         "units": "nT"
       },
       "geometry": null
@@ -65,20 +75,13 @@
       },
       "geometry": null
     },
-    {
-      "type": "Feature",
-      "id": "Z",
-      "properties": {
-        "name": "Vertical Magnitude",
-        "units": "nT"
-      },
-      "geometry": null
-    },
+
 
     {
       "type": "Feature",
       "id": "MSD",
       "properties": {
+        "abbreviation": "Dist",
         "name": "Disturbance",
         "units": "nT"
       },
@@ -88,6 +91,7 @@
       "type": "Feature",
       "id": "MSQ",
       "properties": {
+        "abbreviation": "SQ",
         "name": "Solar Quiet",
         "units": "nT"
       },
@@ -97,6 +101,7 @@
       "type": "Feature",
       "id": "MSV",
       "properties": {
+        "abbreviation": "SV",
         "name": "Solar Variation",
         "units": "nT"
       },
@@ -104,8 +109,29 @@
     },
     {
       "type": "Feature",
+      "id": "MQN",
+      "properties": {
+        "abbreviation": "E-N",
+        "name": "E-Field North",
+        "units": "mV/km"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "MQE",
+      "properties": {
+        "abbreviation": "E-E",
+        "name": "E-Field East",
+        "units": "mV/km"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
       "id": "UK1",
       "properties": {
+        "abbreviation": "T-E",
         "name": "Electronics Temperature",
         "units": "°C"
       },
@@ -115,6 +141,7 @@
       "type": "Feature",
       "id": "UK2",
       "properties": {
+        "abbreviation": "T-F",
         "name": "Fluxgate Temperature",
         "units": "°C"
       },
@@ -124,6 +151,7 @@
       "type": "Feature",
       "id": "UK3",
       "properties": {
+        "abbreviation": "T-P",
         "name": "Proton Temperature",
         "units": "°C"
       },
@@ -133,6 +161,7 @@
       "type": "Feature",
       "id": "UK4",
       "properties": {
+        "abbreviation": "T-O",
         "name": "Outside Temperature",
         "units": "°C"
       },
