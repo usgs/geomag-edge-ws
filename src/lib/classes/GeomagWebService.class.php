@@ -7,7 +7,7 @@ include_once $LIB_DIR . '/classes/JsonOutputFormat.class.php';
 
 class GeomagWebService {
 
-  const VERSION = '0.1.0';
+  const VERSION = '0.1.3';
   const ISO8601 = 'Y-m-d\TH:i:s\Z';
 
   const NO_DATA = 204;
