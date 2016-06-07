@@ -3,6 +3,16 @@
 var config = require('./config');
 
 
+var jsonUtf8Middleware;
+
+jsonUtf8Middleware = function(req, res, next) {
+  if(/\s*.json/.test(req.url)) {
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  }
+  return next();
+};
+
+
 var connect = {
   options: {
     hostname: '*'
@@ -38,6 +48,7 @@ var connect = {
       open: 'http://127.0.0.1:' + config.srcPort + config.ini.MOUNT_PATH + '/',
       middleware: function (connect, options, middlewares) {
         middlewares.unshift(
+          jsonUtf8Middleware,
           require('grunt-connect-rewrite/lib/utils').rewriteRequest,
           require('grunt-connect-proxy/lib/utils').proxyRequest,
           require('gateway')(options.base[0], {
@@ -60,6 +71,7 @@ var connect = {
       open: 'http://127.0.0.1:' + config.distPort + config.ini.MOUNT_PATH + '/',
       middleware: function (connect, options, middlewares) {
         middlewares.unshift(
+          jsonUtf8Middleware,
           require('grunt-connect-rewrite/lib/utils').rewriteRequest,
           require('grunt-connect-proxy/lib/utils').proxyRequest,
           require('gateway')(options.base[0], {

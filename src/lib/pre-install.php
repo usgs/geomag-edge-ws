@@ -68,6 +68,8 @@ file_put_contents($HTTPD_CONF, '
       deny from all
     </LimitExcept>
 
+    AddCharset UTF-8 .json
+
     ExpiresActive on
     ExpiresDefault "access plus 1 days"
   </Location>

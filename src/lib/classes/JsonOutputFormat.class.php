@@ -82,7 +82,7 @@ class JsonOutputFormat {
       'values' => $values
     );
 
-    header('Content-Type: application/json');
+    header('Content-Type: application/json; charset=utf-8');
     echo str_replace('\/', '/', JsonOutputFormat::safe_json_encode($response));
   }
 
