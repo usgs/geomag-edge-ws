@@ -25,7 +25,7 @@ class Iaga2002OutputFormat {
     $props = $station_metadata['properties'];
     $coords = $station_metadata['geometry']['coordinates'];
     $agency_name = $props['agency_name'];
-    $station_name = $props['station_name'];
+    $station_name = $props['name'];
     $latitude = $coords[1];
     $longitude = $coords[0];
     $elevation = $coords[2];
