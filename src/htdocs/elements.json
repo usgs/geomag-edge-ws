@@ -24,7 +24,7 @@
       "type": "Feature",
       "id": "D",
       "properties": {
-        "name": "Declination",
+        "name": "Declination (deci-arcminute)",
         "units": "dam"
       },
       "geometry": null
