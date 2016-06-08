@@ -70,7 +70,7 @@
       "type": "Feature",
       "id": "BRT",
       "properties": {
-        "name": "Barrow Test",
+        "name": "Barrow Test (ObsRIO)",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -116,6 +116,22 @@
     },
     {
       "type": "Feature",
+      "id": "CMT",
+      "properties": {
+        "name": "College (ObsRIO)",
+        "agency": "USGS",
+        "agency_name": "United States Geological Survey (USGS)",
+        "sensor_orientation": "HDZF",
+        "sensor_sampling_rate": 0.01,
+        "declination_base": 16876
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [212.140, 64.874, 197]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "DED",
       "properties": {
         "name": "Deadhorse",
@@ -134,7 +150,7 @@
       "type": "Feature",
       "id": "DHT",
       "properties": {
-        "name": "Deadhorse Test",
+        "name": "Deadhorse Test (ObsRIO)",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -295,6 +311,7 @@
       "id": "USGS",
       "properties": {
         "name": "USGS",
+        "abbreviation": "Index",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",

@@ -24,7 +24,7 @@
       "type": "Feature",
       "id": "D",
       "properties": {
-        "name": "Declination",
+        "name": "Declination (deci-arcminute)",
         "units": "dam"
       },
       "geometry": null
@@ -33,7 +33,7 @@
       "type": "Feature",
       "id": "Z",
       "properties": {
-        "name": "Vertical Magnitude",
+        "name": "Observatory Vertical Component",
         "units": "nT"
       },
       "geometry": null
@@ -131,7 +131,7 @@
       "type": "Feature",
       "id": "UK1",
       "properties": {
-        "abbreviation": "T-E",
+        "abbreviation": "T-Electric",
         "name": "Electronics Temperature",
         "units": "°C"
       },
@@ -141,7 +141,7 @@
       "type": "Feature",
       "id": "UK2",
       "properties": {
-        "abbreviation": "T-F",
+        "abbreviation": "T-Fluxgate",
         "name": "Fluxgate Temperature",
         "units": "°C"
       },
@@ -151,8 +151,8 @@
       "type": "Feature",
       "id": "UK3",
       "properties": {
-        "abbreviation": "T-P",
-        "name": "Proton Temperature",
+        "abbreviation": "T-Total Field",
+        "name": "Total Field Temperature",
         "units": "°C"
       },
       "geometry": null
@@ -161,7 +161,7 @@
       "type": "Feature",
       "id": "UK4",
       "properties": {
-        "abbreviation": "T-O",
+        "abbreviation": "T-Outside",
         "name": "Outside Temperature",
         "units": "°C"
       },
