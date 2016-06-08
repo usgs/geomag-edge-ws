@@ -70,7 +70,7 @@
       "type": "Feature",
       "id": "BRT",
       "properties": {
-        "name": "Barrow Test",
+        "name": "Barrow Test (ObsRIO)",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
@@ -150,7 +150,7 @@
       "type": "Feature",
       "id": "DHT",
       "properties": {
-        "name": "Deadhorse Test",
+        "name": "Deadhorse Test (ObsRIO)",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
