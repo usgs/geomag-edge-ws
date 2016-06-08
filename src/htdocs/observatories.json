@@ -311,6 +311,7 @@
       "id": "USGS",
       "properties": {
         "name": "USGS",
+        "abbreviation": "Index",
         "agency": "USGS",
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
