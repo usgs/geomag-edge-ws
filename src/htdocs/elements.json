@@ -33,7 +33,7 @@
       "type": "Feature",
       "id": "Z",
       "properties": {
-        "name": "Vertical Magnitude",
+        "name": "Observatory Vertical Component",
         "units": "nT"
       },
       "geometry": null
