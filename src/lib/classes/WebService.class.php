@@ -6,8 +6,6 @@
  */
 class WebService {
 
-  const ISO8601 = 'Y-m-d\TH:i:s\Z';
-
   const NO_DATA = 204;
   const BAD_REQUEST = 400;
   const NOT_FOUND = 404;
@@ -26,6 +24,14 @@ class WebService {
     self::NOT_IMPLEMENTED => 'Not Implemented',
     self::SERVICE_UNAVAILABLE => 'Service Unavailable'
   );
+
+
+  public $version;
+
+
+  public function __construct($version = '0.0.0') {
+    $this->version = $version;
+  }
 
 
   /**
@@ -68,10 +74,10 @@ class WebService {
       'type' => 'Error',
       'metadata' => array(
         'status' => $code,
-        'generated' => gmdate(self::ISO8601),
+        'generated' => self::formatISO8601(),
         'url' => $HOST_URL_PREFIX . $_SERVER['REQUEST_URI'],
         'title' => self::$statusMessage[$code],
-        'api' => self::VERSION,
+        'api' => $this->version,
         'error' => $message
       )
     );
@@ -114,10 +120,10 @@ class WebService {
       $_SERVER['REQUEST_URI'],
       '',
       'Request Submitted:',
-      gmdate(self::ISO8601),
+      self::formatISO8601(),
       '',
       'Service version:',
-      self::VERSION
+      $this->version
     ));
     exit();
   }
@@ -265,6 +271,31 @@ class WebService {
       default:
         throw new Exception('json_encode error (' . $lastError . ')');
     }
+  }
+
+  /**
+   * Format a epoch timestamp as ISO8601 with milliseconds.
+   *
+   * @param $time {Number}
+   *     default microtime(true).
+   *     decimal epoch timestamp.
+   * @return {String}
+   *     time formatted as ISO8601 with milliseconds.
+   */
+  public static function formatISO8601($time=null) {
+    if ($time === null) {
+      $time = microtime(true);
+    }
+
+    $timestr =
+        // time without timezone
+        gmdate('Y-m-d\TH:i:s', $time)
+        // milliseconds
+        . '.' . str_pad(($time * 1000) % 1000, 3, '0', STR_PAD_LEFT)
+        // timezone
+        . 'Z';
+
+    return $timestr;
   }
 
 }
