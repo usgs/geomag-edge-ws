@@ -279,21 +279,27 @@ class WebService {
    * @param $time {Number}
    *     default microtime(true).
    *     decimal epoch timestamp.
+   * @param $timeSep {String}
+   *     default 'T'.
+   *     separator between date and time.
+   * @param $utc {String}
+   *     default 'Z'.
+   *     timezone string for UTC.
    * @return {String}
    *     time formatted as ISO8601 with milliseconds.
    */
-  public static function formatISO8601($time=null) {
+  public static function formatISO8601($time=null, $timeSep='\T', $utc='Z') {
     if ($time === null) {
       $time = microtime(true);
     }
 
     $timestr =
         // time without timezone
-        gmdate('Y-m-d\TH:i:s', $time)
+        gmdate('Y-m-d' . $timeSep . 'H:i:s', $time)
         // milliseconds
         . '.' . str_pad(($time * 1000) % 1000, 3, '0', STR_PAD_LEFT)
         // timezone
-        . 'Z';
+        . $utc;
 
     return $timestr;
   }

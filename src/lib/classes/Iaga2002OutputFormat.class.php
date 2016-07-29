@@ -6,9 +6,6 @@ class Iaga2002OutputFormat {
   static $EMPTY_VALUE = '99999.99';
 
 
-  public function __construct() {
-  }
-
   public function output($data, $query, $metadata) {
     header('Content-Type: text/plain');
 
@@ -159,7 +156,7 @@ class Iaga2002OutputFormat {
    */
   protected function formatValues($time, $values) {
     $doy = gmdate('z', $time) + 1;
-    return gmdate('Y-m-d H:i:s.000', $time) .
+    return WebService::formatISO8601($time, ' ', '') .
         ' ' . str_pad($doy, 3, '0', STR_PAD_LEFT) .
         '   ' .
         str_pad($values[0], 10, ' ', STR_PAD_LEFT) .

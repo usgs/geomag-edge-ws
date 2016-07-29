@@ -4,6 +4,7 @@ class JsonOutputFormat {
 
   const ISO8601 = 'Y-m-d\TH:i:s\Z';
 
+
   public function output($data, $query, $metadata) {
     global $HOST_URL_PREFIX;
 
@@ -33,7 +34,7 @@ class JsonOutputFormat {
     $times = $data['times'];
     // convert to iso8601
     $times = array_map(function ($t) {
-      return gmdate(self::ISO8601, $t);
+      return WebService::formatISO8601($t);
     }, $times);
 
     // data arrays
