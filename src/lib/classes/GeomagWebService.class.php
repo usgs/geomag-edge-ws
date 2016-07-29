@@ -1,9 +1,10 @@
 <?php
 
-include_once $LIB_DIR . '/classes/WebService.class.php';
 include_once $LIB_DIR . '/classes/GeomagQuery.class.php';
 include_once $LIB_DIR . '/classes/Iaga2002OutputFormat.class.php';
 include_once $LIB_DIR . '/classes/JsonOutputFormat.class.php';
+include_once $LIB_DIR . '/classes/Timeseries.class.php';
+include_once $LIB_DIR . '/classes/WebService.class.php';
 
 
 class GeomagWebService extends WebService {
@@ -61,20 +62,13 @@ class GeomagWebService extends WebService {
    */
   protected function getData($query) {
     $data = [];
+    $times = null;
 
     $endtime = $query->endtime;
     $sampling_period = $query->sampling_period;
     $starttime = $query->starttime;
     $station = $query->id;
     $type = $query->type;
-
-    // build times array
-    $times = array();
-    $len = ($endtime - $starttime) / $sampling_period;
-    for ($i = 0; $i <= $len; $i++) {
-      $times[] = $starttime + $i * $sampling_period;
-    }
-    $data['times'] = $times;
 
     foreach ($query->elements as $element) {
       $sncl = $this->getSNCL(
@@ -90,26 +84,68 @@ class GeomagWebService extends WebService {
           $sncl['channel'],
           $sncl['location']);
 
-      // build values array
-      $values = $response->getDataArray($starttime, $endtime);
-      if (!is_array($values)) {
-        // empty channel
-        $values = array_fill(0, count($times), null);
-      } else {
-        $values = array_map(function ($val) {
-          if ($val === null) {
-            return null;
-          }
-          return $val / 1000;
-        }, $values);
-      }
+      $timeseries = $response->toTimeseries();
 
       $data[$element] = array(
         'sncl' => $sncl,
         'element' => $element,
         'response' => $response,
-        'values' => $values
+        'timeseries' => $timeseries,
+        'values' => null
       );
+
+      if ($timeseries->isEmpty()) {
+        // no data
+        continue;
+      }
+
+      // fill/trim to starttime/endtime
+      $timeseries = $timeseries->extend($starttime, $endtime);
+
+      $timeseriesTimes = $timeseries->times;
+      if ($times == null) {
+        // use first times that exist
+        $times = $timeseriesTimes;
+        $size = count($times);
+        $data['times'] = $times;
+      } else {
+        // make sure times match
+        if ($size != count($timeseriesTimes)) {
+          throw new Error('inconsistent channel length');
+        }
+        for ($i = 0; $i < $size; $i++) {
+          if ($times[$i] != $timeseriesTimes[$i]) {
+            throw new Error('inconsistent channel times');
+          }
+        }
+      }
+
+      // scale values
+      $data[$element]['values'] = array_map(function ($v) {
+        return ($v == null ? null : $v / 1000);
+      }, $timeseries->data);
+    }
+
+    // if all channels empty, generate times
+    if ($times == null) {
+      $times = Timeseries::generateEmpty(
+          $starttime,
+          $endtime,
+          $sampling_period)->times;
+      $size = count($times);
+      $data['times'] = $times;
+    }
+
+    // generate empty channels
+    foreach ($query->elements as $element) {
+      if ($data[$element]['values'] == null) {
+        $timeseries = Timeseries::generateEmpty(
+            $times[0],
+            $times[$size - 1],
+            $times[1] - $times[0]);
+        $data[$element]['timeseries'] = $timeseries;
+        $data[$element]['values'] = $timeseries->data;
+      }
     }
 
     return $data;
