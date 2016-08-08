@@ -3,32 +3,13 @@
 include_once $LIB_DIR . '/classes/GeomagQuery.class.php';
 include_once $LIB_DIR . '/classes/Iaga2002OutputFormat.class.php';
 include_once $LIB_DIR . '/classes/JsonOutputFormat.class.php';
+include_once $LIB_DIR . '/classes/Timeseries.class.php';
+include_once $LIB_DIR . '/classes/WebService.class.php';
 
 
-class GeomagWebService {
+class GeomagWebService extends WebService {
 
   const VERSION = '0.1.3';
-  const ISO8601 = 'Y-m-d\TH:i:s\Z';
-
-  const NO_DATA = 204;
-  const BAD_REQUEST = 400;
-  const NOT_FOUND = 404;
-  const CONFLICT = 409;
-  const SERVER_ERROR = 500;
-  const NOT_IMPLEMENTED = 501;
-  const SERVICE_UNAVAILABLE = 503;
-
-  // status message text
-  public static $statusMessage = array(
-    self::NO_DATA => 'No Data',
-    self::BAD_REQUEST => 'Bad Request',
-    self::NOT_FOUND => 'Not Found',
-    self::CONFLICT => 'Conflict',
-    self::SERVER_ERROR => 'Internal Server Error',
-    self::NOT_IMPLEMENTED => 'Not Implemented',
-    self::SERVICE_UNAVAILABLE => 'Service Unavailable'
-  );
-
 
   public $waveserver;
   public $metadata;
@@ -42,6 +23,7 @@ class GeomagWebService {
    *        Associative array of metadata, keyed by upper case observatory id.
    */
   public function __construct($waveserver, $metadata) {
+    parent::__construct(self::VERSION);
     $this->waveserver = $waveserver;
     $this->metadata = $metadata;
   }
@@ -80,20 +62,13 @@ class GeomagWebService {
    */
   protected function getData($query) {
     $data = [];
+    $times = null;
 
     $endtime = $query->endtime;
     $sampling_period = $query->sampling_period;
     $starttime = $query->starttime;
     $station = $query->id;
     $type = $query->type;
-
-    // build times array
-    $times = array();
-    $len = ($endtime - $starttime) / $sampling_period;
-    for ($i = 0; $i <= $len; $i++) {
-      $times[] = $starttime + $i * $sampling_period;
-    }
-    $data['times'] = $times;
 
     foreach ($query->elements as $element) {
       $sncl = $this->getSNCL(
@@ -109,26 +84,68 @@ class GeomagWebService {
           $sncl['channel'],
           $sncl['location']);
 
-      // build values array
-      $values = $response->getDataArray($starttime, $endtime);
-      if (!is_array($values)) {
-        // empty channel
-        $values = array_fill(0, count($times), null);
-      } else {
-        $values = array_map(function ($val) {
-          if ($val === null) {
-            return null;
-          }
-          return $val / 1000;
-        }, $values);
-      }
+      $timeseries = $response->toTimeseries();
 
       $data[$element] = array(
         'sncl' => $sncl,
         'element' => $element,
         'response' => $response,
-        'values' => $values
+        'timeseries' => $timeseries,
+        'values' => null
       );
+
+      if ($timeseries->isEmpty()) {
+        // no data
+        continue;
+      }
+
+      // fill/trim to starttime/endtime
+      $timeseries = $timeseries->extend($starttime, $endtime);
+
+      $timeseriesTimes = $timeseries->times;
+      if ($times == null) {
+        // use first times that exist
+        $times = $timeseriesTimes;
+        $size = count($times);
+        $data['times'] = $times;
+      } else {
+        // make sure times match
+        if ($size != count($timeseriesTimes)) {
+          throw new Error('inconsistent channel length');
+        }
+        for ($i = 0; $i < $size; $i++) {
+          if ($times[$i] != $timeseriesTimes[$i]) {
+            throw new Error('inconsistent channel times');
+          }
+        }
+      }
+
+      // scale values
+      $data[$element]['values'] = array_map(function ($v) {
+        return ($v == null ? null : $v / 1000);
+      }, $timeseries->data);
+    }
+
+    // if all channels empty, generate times
+    if ($times == null) {
+      $times = Timeseries::generateEmpty(
+          $starttime,
+          $endtime,
+          $sampling_period)->times;
+      $size = count($times);
+      $data['times'] = $times;
+    }
+
+    // generate empty channels
+    foreach ($query->elements as $element) {
+      if ($data[$element]['values'] == null) {
+        $timeseries = Timeseries::generateEmpty(
+            $times[0],
+            $times[$size - 1],
+            $times[1] - $times[0]);
+        $data[$element]['timeseries'] = $timeseries;
+        $data[$element]['values'] = $timeseries->data;
+      }
     }
 
     return $data;
@@ -211,75 +228,6 @@ class GeomagWebService {
     );
   }
 
-
-  public function error($code, $message) {
-    global $APP_DIR;
-    // only cache errors for 60 seconds
-    $CACHE_MAXAGE = 60;
-    include $APP_DIR . '/lib/cache.inc.php';
-    if (isset($_GET['format']) && $_GET['format'] === 'json') {
-      // For json requests, user wants json output
-      $this->jsonError($code, $message);
-    } else {
-      $this->httpError($code, $message);
-    }
-  }
-
-  public function jsonError ($code, $message) {
-    global $HOST_URL_PREFIX;
-    header('Content-type: application/json');
-    // Does this need to look fully like GeoJSON format?
-    $response = array(
-      'type' => 'Error',
-      'metadata' => array(
-        'status' => $code,
-        'generated' => gmdate(self::ISO8601),
-        'url' => $HOST_URL_PREFIX . $_SERVER['REQUEST_URI'],
-        'title' => self::$statusMessage[$code],
-        'api' => self::VERSION,
-        'error' => $message
-      )
-    );
-    echo str_replace('\/', '/', JsonOutputFormat::safe_json_encode($response));
-    exit();
-  }
-
-  public function httpError ($code, $message) {
-    if (isset(self::$statusMessage[$code])) {
-      $codeMessage = ' ' . self::$statusMessage[$code];
-    } else {
-      $codeMessage = '';
-    }
-    header('HTTP/1.0 ' . $code . $codeMessage);
-    if ($code < 400) {
-      exit();
-    }
-    global $HOST_URL_PREFIX;
-    global $MOUNT_PATH;
-
-    // error message for 400 or 500
-    header('Content-type: text/plain');
-    echo implode("\n", array(
-      'Error ' . $code . ': ' . self::$statusMessage[$code],
-      '',
-      $message,
-      '',
-      'Usage details are available from ' .
-          $HOST_URL_PREFIX . $MOUNT_PATH . '/',
-      '',
-      'Request:',
-      $_SERVER['REQUEST_URI'],
-      '',
-      'Request Submitted:',
-      gmdate(self::ISO8601),
-      '',
-      'Service version:',
-      self::VERSION
-    ));
-    exit();
-  }
-
-
   protected function parseQuery($params) {
     $query = new GeomagQuery();
 
@@ -344,125 +292,6 @@ class GeomagWebService {
     }
 
     return $query;
-  }
-
-
-  /**
-   * Validate a time parameter.
-   *
-   * @param $param parameter name, for error message.
-   * @param $value parameter value
-   * @return value as epoch millisecond timestamp, exit with error if invalid.
-   */
-  protected function validateTime($param, $value) {
-    $parsed = strtotime($value);
-    if ($parsed === false) {
-      $this->error(self::BAD_REQUEST,
-        'Bad ' . $param . ' value "' . $value . '".' .
-        ' Valid values are ISO-8601 timestamps.');
-    }
-    return $parsed;
-  }
-
-  /**
-   * Validate a boolean parameter.
-   *
-   * @param $param parameter name, for error message
-   * @param $value parameter value
-   * @return value as boolean if valid ("true" or "false", case insensitively), exit with error if invalid.
-   */
-  protected function validateBoolean($param, $value) {
-    $val = strtolower($value);
-    if ($val !== 'true' && $val !== 'false') {
-      $this->error(self::BAD_REQUEST,
-          'Bad ' . $param . ' value "' . $value . '".' .
-          ' Valid values are (case insensitive): "TRUE", "FALSE".');
-    }
-    return ($val === 'true');
-  }
-
-  /**
-   * Validate an integer parameter.
-   *
-   * @param $param parameter name, for error message
-   * @param $value parameter value
-   * @param $min minimum valid value for parameter, or null if no minimum.
-   * @param $max maximum valid value for parameter, or null if no maximum.
-   * @return value as integer if valid (integer and in range), exit with error if invalid.
-   */
-  protected function validateInteger($param, $value, $min, $max) {
-    if (
-        !ctype_digit($value)
-        || ($min !== null && intval($value) < $min)
-        || ($max !== null && intval($value) > $max)
-    ) {
-      $message = '';
-      if ($min === null && $max === null) {
-        $message = 'integers';
-      } else {
-        $message = '';
-        if ($min !== null) {
-          $message .= $min . ' <= ';
-        }
-        $message .= $param;
-        if ($max !== null) {
-          $message .= ' <= ' . $max;
-        }
-      }
-      $this->error(self::BAD_REQUEST, 'Bad ' . $param . ' value "' . $value . '".' .
-          ' Valid values are ' . $message);
-    }
-    return intval($value);
-  }
-
-  /**
-   * Validate a float parameter.
-   *
-   * @param $param parameter name, for error message
-   * @param $value parameter value
-   * @param $min minimum valid value for parameter, or null if no minimum.
-   * @param $max maximum valid value for parameter, or null if no maximum.
-   * @return value as float if valid (float and in range), exit with error if invalid.
-   */
-  protected function validateFloat($param, $value, $min, $max) {
-    if (
-        !is_numeric($value)
-        || ($min !== null && floatval($value) < $min)
-        || ($max !== null && floatval($value) > $max)
-    ) {
-      if ($min === null && $max === null) {
-        $message = 'numeric';
-      } else {
-        $message = '';
-        if ($min !== null) {
-          $message .= $min . ' <= ';
-        }
-        $message .= $param;
-        if ($max !== null) {
-          $message .= ' <= ' . $max;
-        }
-      }
-
-      $this->error(self::BAD_REQUEST, 'Bad ' . $param . ' value "' . $value . '".' .
-          ' Valid values are ' . $mesasge);
-    }
-    return floatval($value);
-  }
-
-  /**
-   * Validate a parameter that has an enumerated list of valid values.
-   *
-   * @param $param parameter name, for error message
-   * @param $value parameter value
-   * @param $enum array of valid parameter values.
-   * @return value if valid (in array), exit with error if invalid.
-   */
-  protected function validateEnumerated($param, $value, $enum) {
-    if (!in_array($value, $enum)) {
-      $this->error(self::BAD_REQUEST, 'Bad ' . $param . ' value "' . $value . '".' .
-        ' Valid values are: "' . implode('", "', $enum) . '".');
-    }
-    return $value;
   }
 
 }

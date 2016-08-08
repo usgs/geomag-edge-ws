@@ -1,5 +1,8 @@
 <?php
 
+include_once $LIB_DIR . '/classes/Timeseries.class.php';
+
+
 /**
  * Parser for first line of a response from a GETSNCLRAW request.
  *
@@ -53,124 +56,49 @@ class WaveServerResponse {
     }
   }
 
-  public function getTimesArray () {
-    if (count($this->traceBufs) === 0) {
-      return null;
-    }
-    $times = array();
+  /**
+   * Generate parallel arrays of data and times.
+   *
+   * @return {Array<'data','times' => Array>}
+   */
+  public function toTimeseries () {
+    $timeseries = new Timeseries();
 
-    $samplingRate = $this->traceBufs[0]->samplingRate;
-    $len = ($this->endTime - $this->startTime) * $samplingRate;
-    $delta = 1 / $samplingRate;
-    for ($i = 0; $i <= $len; $i++) {
-      $times[] = $this->startTime + $i * $delta;
+    for ($tb = 0, $tb_len = count($this->traceBufs); $tb < $tb_len; $tb++) {
+      $traceBuf = $this->traceBufs[$tb];
+
+      $timeseries = $timeseries->concat($traceBuf->toTimeseries());
     }
 
-    return $times;
+    return $timeseries;
   }
 
   /**
-   * Get data for a specific time.
+   * Summarize tracebuf.
    *
-   * @param $time {Number}
-   *        requested time.
-   * @return {Number}
-   *         data at point nearest to $time, or null if not available.
+   * @return {String}
+   *     string including tracebuf metadata.
    */
-  public function getData ($time) {
-    $tb_len = count($this->traceBufs);
-    if ($tb_len === 0) {
-      // no data
-      return null;
-    }
-
-    for ($tb = 0; $tb < $tb_len; $tb++) {
-      $traceBuf = $this->traceBufs[$tb++];
-      $samplingRate = $traceBuf->samplingRate;
-
-      if ($time < $traceBuf->startTime) {
-        // data not available
-        return null;
-      } else if ($time <= $traceBuf->endTime) {
-        // in current tracebuf, compute index.
-        $index = ($time - $traceBuf->startTime) * $samplingRate;
-        $index = round($index);
-        return $traceBuf->data[$index];
-      }
-    }
-
-    // didn't find data
-    return null;
-  }
-
-  /**
-   * Merge data from tracebufs, filling gaps with null values.
-   *
-   * @param $startTime {Number}
-   *        default null.
-   *        use a specific start time.
-   *        when null, use time of the first sample in response.
-   * @param $endTime {Number}
-   *        default null.
-   *        use a specific end time.
-   *        when null, use time of the last sample in response.
-   * @return {Array}
-   *         null if no tracebufs part of response.
-   *         otherwise, one data point for all data between start and end time.
-   */
-  public function getDataArray ($startTime=null, $endTime=null) {
-    $tb_len = count($this->traceBufs);
-    if ($tb_len === 0) {
-      // no data
-      return null;
-    }
-
-    if ($startTime === null) {
-      $startTime = $this->startTime;
-    }
-    if ($endTime === null) {
-      $endTime = $this->endTime;
-    }
-
-    $tb = 0;
-    $traceBuf = $this->traceBufs[$tb++];
-    $samplingRate = $traceBuf->samplingRate;
-    $delta = 1 / $samplingRate;
-
-    $data = array();
-    $len = ($endTime - $startTime) * $samplingRate;
-    for ($i = 0; $i <= $len; $i++) {
-      $time = $startTime + $i * $delta;
-
-      if ($traceBuf === null) {
-        // no data
-        $data[] = null;
-        continue;
-      }
-
-      if ($time > $traceBuf->endTime) {
-        // after current tracebuf
-        if ($tb === $tb_len) {
-          // out of tracebufs
-          $traceBuf = null;
-          $data[] = null;
-          continue;
-        }
-        $traceBuf = $this->traceBufs[$tb++];
-      }
-
-      if ($time < $traceBuf->startTime) {
-        // before current tracebuf = gap
-        $data[] = null;
-        continue;
-      }
-
-      $index = ($time - $traceBuf->startTime) * $samplingRate;
-      $index = round($index);
-      $data[] = $traceBuf->data[$index];
-    }
-
-    return $data;
+  public function toString () {
+    return implode(', ',
+        array(
+          'request=' . $this->requestId,
+          'pin=' . $this->pin,
+          'sncl=' . implode('|', array(
+              $this->station,
+              $this->network,
+              $this->channel,
+              $this->location)),
+          'flag=' . $this->flag,
+          'dataType=' . $this->dataType,
+          'startTime=' . $this->startTime,
+          'endTime=' . $this->endTime,
+          'numBytes=' . $this->numBytes,
+          'traceBufs=' . count($this->traceBufs))
+        ) . "\n\t" .
+        implode("\n\t", array_map(function ($tb) {
+          return $tb->toString();
+        }, $this->traceBufs));
   }
 
 }

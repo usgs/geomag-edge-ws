@@ -1,5 +1,8 @@
 <?php
 
+include_once $LIB_DIR . '/classes/Timeseries.class.php';
+
+
 /**
  * Parser for TraceBuf part of a waveserver response.
  */
@@ -47,6 +50,41 @@ class TraceBuf {
     $this->quality = $header[11];
     $this->pad = $header[12];
     $this->data = $buffer->unpack($this->numSamples . 'i');
+  }
+
+
+  /**
+   * Generate parallel arrays of data and times.
+   *
+   * @return {Array<'data','times' => Array>}
+   */
+  public function toTimeseries () {
+    $data = array();
+    $times = array();
+
+    $len = count($this->data);
+    for ($i = 0; $i < $len; $i++) {
+      $data[] = $this->data[$i];
+      $times[] = $this->startTime + ($i * $this->delta);
+    }
+
+    return new Timeseries($data, $times);
+  }
+
+  /**
+   * Summarize tracebuf.
+   *
+   * @return {String}
+   *     string including tracebuf metadata.
+   */
+  public function toString () {
+    return implode(', ', array(
+      'numSamples=' . $this->numSamples,
+      'startTime=' . $this->startTime,
+      'endTime=' . $this->endTime,
+      'samplingRate=' . $this->samplingRate,
+      'delta=' . $this->delta
+    ));
   }
 
 }
