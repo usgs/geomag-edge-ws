@@ -3,7 +3,8 @@
 class Iaga2002OutputFormat {
 
   static $EMPTY_CHANNEL = 'NUL';
-  static $EMPTY_VALUE = '99999.99';
+  static $EMPTY_CHANNEL_VALUE = '88888.00';
+  static $EMPTY_VALUE = '99999.00';
 
 
   public function output($data, $query, $metadata) {
@@ -113,7 +114,7 @@ class Iaga2002OutputFormat {
         $values[] = $value;
       }
       while (count($values) < 4) {
-        $values[] = self::$EMPTY_VALUE;
+        $values[] = self::$EMPTY_CHANNEL_VALUE;
       }
       $buf .= $this->formatValues($times[$i], $values);
     }
