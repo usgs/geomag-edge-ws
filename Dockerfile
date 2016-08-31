@@ -38,8 +38,6 @@ RUN /bin/bash --login -c " \
     "
 
 
-
-
 WORKDIR /hazdev-project
 EXPOSE 8202
 CMD [ "src/lib/docker-entrypoint.sh" ]
