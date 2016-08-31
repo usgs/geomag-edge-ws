@@ -6,6 +6,8 @@ $APP_DIR = dirname(dirname(__FILE__));
 $LIB_DIR = $APP_DIR . '/lib';
 
 $CONFIG = parse_ini_file($APP_DIR . '/conf/config.ini');
+$CONFIG = array_merge($CONFIG, $_SERVER, $_ENV);
+
 $MOUNT_PATH = $CONFIG['MOUNT_PATH'];
 $EDGE_HOST = $CONFIG['EDGE_HOST'];
 $EDGE_PORT = $CONFIG['EDGE_PORT'];

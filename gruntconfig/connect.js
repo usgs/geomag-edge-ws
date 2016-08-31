@@ -1,6 +1,7 @@
 'use strict';
 
-var config = require('./config');
+var config = require('./config'),
+    extend = require('extend');
 
 
 var jsonUtf8Middleware;
@@ -53,9 +54,9 @@ var connect = {
           require('grunt-connect-proxy/lib/utils').proxyRequest,
           require('gateway')(options.base[0], {
             '.php': 'php-cgi',
-            'env': {
+            'env': extend({}, process.env, {
               'PHPRC': 'node_modules/hazdev-template/dist/conf/php.ini'
-            }
+            })
           })
         );
         return middlewares;
@@ -76,9 +77,9 @@ var connect = {
           require('grunt-connect-proxy/lib/utils').proxyRequest,
           require('gateway')(options.base[0], {
             '.php': 'php-cgi',
-            'env': {
+            'env': extend({}, process.env, {
               'PHPRC': 'node_modules/hazdev-template/dist/conf/php.ini'
-            }
+            })
           })
         );
         return middlewares;

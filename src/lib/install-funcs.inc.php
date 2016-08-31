@@ -38,6 +38,13 @@
 
     // Prompt for and read the configuration option value
     printf("%s [%s]: ", $help, ($default === null ? '<none>' : $default));
+
+    if (NON_INTERACTIVE) {
+      // non-interactive
+      echo '(Non-interactive, using default)' . PHP_EOL;
+      return $default;
+    }
+
     if ($secure && !$isWindows) {system('stty -echo');}
     $value = trim(fgets(STDIN));
     if ($secure && !$isWindows) {system('stty echo'); print "\n";}

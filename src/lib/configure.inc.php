@@ -9,6 +9,10 @@
     $configure_action = '0';
   }
 
+  if (NON_INTERACTIVE) {
+    $configure_action = '3';
+  }
+
   while ($configure_action !== '1' && $configure_action !== '2' &&
       $configure_action !== '3') {
 

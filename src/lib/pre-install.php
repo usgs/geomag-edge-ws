@@ -28,6 +28,12 @@ if (!is_dir($CONF_DIR)) {
   mkdir($CONF_DIR, 0755, true);
 }
 
+// check for non-interactive mode
+define('NON_INTERACTIVE',
+    isset($_SERVER['NON_INTERACTIVE'])
+        ? $_SERVER['NON_INTERACTIVE'] === 'true'
+        : false);
+
 
 // configuration defaults
 $DEFAULTS = array(
