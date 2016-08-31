@@ -13,15 +13,23 @@ module.exports = function (grunt) {
     'copy:build'
   ]);
 
-  grunt.registerTask('dist', [
+  grunt.registerTask('builddist', [
     'build',
     'clean:dist',
     'copy:dist',
-    'postcss:dist',
+    'postcss:dist'
+  ]);
+
+  grunt.registerTask('rundist', [
     'connect:template',
     'configureRewriteRules',
     'configureProxies:dist',
     'connect:dist'
+  ]);
+
+  grunt.registerTask('dist', [
+    'builddist',
+    'rundist'
   ]);
 
   grunt.registerTask('default', [
