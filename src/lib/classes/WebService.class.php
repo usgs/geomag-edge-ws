@@ -50,6 +50,7 @@ class WebService {
     // only cache errors for 60 seconds
     $CACHE_MAXAGE = 60;
     include $APP_DIR . '/lib/cache.inc.php';
+    $message = htmlentities($message);
     if (isset($_GET['format']) && $_GET['format'] === 'json') {
       // For json requests, user wants json output
       $this->jsonError($code, $message);
