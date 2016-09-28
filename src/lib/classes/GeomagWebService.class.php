@@ -111,11 +111,11 @@ class GeomagWebService extends WebService {
       } else {
         // make sure times match
         if ($size != count($timeseriesTimes)) {
-          throw new Error('inconsistent channel length');
+          throw new Exception('inconsistent channel length');
         }
         for ($i = 0; $i < $size; $i++) {
           if ($times[$i] != $timeseriesTimes[$i]) {
-            throw new Error('inconsistent channel times');
+            throw new Exception('inconsistent channel times');
           }
         }
       }
