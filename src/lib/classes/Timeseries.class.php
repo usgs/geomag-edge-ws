@@ -159,10 +159,11 @@ class Timeseries {
     $i = 0;
     $time = $startTime;
     foreach ($gaps as $gap) {
+
       // time of first missing sample
       $gapStart = $gap[0] + $delta;
-      // time of next sample
-      $gapEnd = $gap[1];
+      // time of last missing sample
+      $gapEnd = $gap[1] - $delta;
 
       // copy actual data before gap
       while ($i < $size && $this->times[$i] < $gapStart) {
@@ -185,6 +186,7 @@ class Timeseries {
         $timeseries->times[] = $time;
         $g = $g + 1;
       }
+
     }
 
     // copy remaining actual data
