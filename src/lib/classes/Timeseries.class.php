@@ -118,7 +118,7 @@ class Timeseries {
     }
 
     // copy data in range
-    while ($i < $size && $time < $endTime) {
+    while ($i < $size && $this->times[$i] <= $endTime) {
       $time = $this->times[$i];
       $timeseries->data[] = $this->data[$i];
       $timeseries->times[] = $time;
