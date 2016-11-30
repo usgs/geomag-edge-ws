@@ -39,13 +39,15 @@ class GeomagWebService extends WebService {
     }
 
     try {
-      $data = $this->getData($query);
       if ($query->format === 'iaga2002') {
         $output = new Iaga2002OutputFormat();
+        $output->run($this, $query, $this->metadata);
       } else {
+        // query format is json
+        $data = $this->getData($query);
         $output = new JsonOutputFormat();
+        $output->output($data, $query, $this->metadata);
       }
-      $output->output($data, $query, $this->metadata);
     } catch (Exception $e) {
       $this->error(self::SERVER_ERROR, $e->getMessage());
     }
@@ -60,7 +62,7 @@ class GeomagWebService extends WebService {
    *         associative array of data.
    *         keys are requested elements.
    */
-  protected function getData($query) {
+  public function getData($query) {
     $data = [];
     $times = null;
 
