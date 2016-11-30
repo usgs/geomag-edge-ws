@@ -76,9 +76,12 @@ class GeomagWebService extends WebService {
           $element,
           $query->sampling_period,
           $query->type);
+
       $response = $this->waveserver->get(
           $starttime,
-          $endtime,
+          // when requesting only one sample, need to request following sample
+          // this is trimmed during extend below
+          $endtime + ($starttime === $endtime ? $query->sampling_period : 0),
           $sncl['station'],
           $sncl['network'],
           $sncl['channel'],
