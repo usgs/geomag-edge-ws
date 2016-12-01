@@ -38,6 +38,30 @@ class GeomagWebService extends WebService {
       $this->error(self::BAD_REQUEST, $e->getMessage());
     }
 
+    // validate requested interval.
+    $interval = $query->endtime - $query->starttime;
+    $format = $query->format;
+    $sampling_period = $query->sampling_period;
+
+    $requested_samples = count($query->elements) * $interval / $sampling_period;
+    if ($format === 'iaga2002') {
+      // streaming supports more samples
+      // 345600 = 4 elements * 24 hours * 3600 samples/hour
+      // = 31 days * 24 hours/day * 60 samples/hour
+      if ($requested_samples > 345600) {
+        $this->error(self::BAD_REQUEST,
+            'IAGA format is restricted to 345600 samples per request' .
+            ' (#elements * (endtime - starttime) / sampling_period)');
+      }
+    } else { // json
+      // 172800 = 4 elements * 12 hours * 3600 seconds/hour * 1 sample/second
+      if ($requested_samples > 172800) {
+        $this->error(self::BAD_REQUEST,
+            'JSON format is restricted to 172800 samples per request' .
+            ' (#elements * (endtime - starttime) / sampling_period)');
+      }
+    }
+
     try {
       if ($query->format === 'iaga2002') {
         $output = new Iaga2002OutputFormat();
