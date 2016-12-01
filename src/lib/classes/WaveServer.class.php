@@ -78,7 +78,7 @@ class WaveServer {
       do {
         $bytes .= fread($socket, $response->numBytes - $len);
         $len = strlen($bytes);
-      } while ($len < $response->numBytes);
+      } while ($len < $response->numBytes && !feof($socket));
       $response->traceBufs = $this->parseTraceBufs($bytes);
     }
     return $response;
@@ -132,8 +132,8 @@ class WaveServer {
    *         connected socket.
    * @throws Exception if unable to connect.
    */
-  protected function connect() {
-    if (!$this->socket) {
+  public function connect() {
+    if (!$this->socket || feof($this->socket)) {
       $this->socket = fsockopen($this->host, $this->port, $errno, $errstr, $this->timeout);
       if (!$this->socket) {
         throw new Exception('Unable to connect (' . $errno . ': ' . $errstr . ')');
