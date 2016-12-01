@@ -48,6 +48,37 @@ if (!isset($TEMPLATE)) {
   </dd>
 </dl>
 
+<h2>Request Limits</h2>
+
+<p>
+  To ensure availablility for users, the web service restricts the amount of
+  data that can be retrieved in one request.  The amount of data requested
+  is computed as follows, where interval is the number of seconds between
+  starttime and endtime:
+</p>
+
+<pre>
+  samples = count(elements) * interval / sampling_period
+</pre>
+
+<h3>Limits by output format</h3>
+<dl>
+  <dt>json</dt>
+  <dd>
+    <code>172800 samples</code> = 4 elements * 12 hours * 3600 samples/hour.
+  </dd>
+
+  <dt>iaga2002</dt>
+  <dd>
+    <code>345600 samples</code> = 4 elements * 24 hours * 3600 samples/hour.
+  </dd>
+</dl>
+
+<p>
+  NOTE: while the <code>json</code> format supports fewer total samples per
+  request, users may request fewer elements to retrieve longer intervals.
+</p>
+
 
 <h2>Parameters</h2>
 <dl>
@@ -118,6 +149,6 @@ if (!isset($TEMPLATE)) {
     Default: <code>iaga2002</code><br/>
     Valid values:
       <code>iaga2002</code>,
-      <code>json</code>
+      <code>json</code>.
   </dd>
 </dl>
