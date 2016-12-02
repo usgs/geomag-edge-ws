@@ -9,7 +9,7 @@ include_once $LIB_DIR . '/classes/WebService.class.php';
 
 class GeomagWebService extends WebService {
 
-  const VERSION = '0.1.3';
+  const VERSION = '{{VERSION}}';
 
   public $waveserver;
   public $metadata;
