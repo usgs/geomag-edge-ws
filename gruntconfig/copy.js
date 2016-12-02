@@ -1,6 +1,11 @@
 'use strict';
 
-var config = require('./config');
+var config = require('./config'),
+    fs = require('fs'),
+    packageJson;
+
+packageJson = JSON.parse(fs.readFileSync('package.json'));
+
 
 var copy = {
   build: {
@@ -12,7 +17,12 @@ var copy = {
       '!**/*.js',
       '!**/*.scss',
       '!**/*.orig'
-    ]
+    ],
+    options: {
+      process: function (content, srcpath) {
+        return content.replace('{{VERSION}}', packageJson.version);
+      }
+    }
   },
   dist: {
     expand: true,
