@@ -38,14 +38,12 @@ define('NON_INTERACTIVE',
 // configuration defaults
 $DEFAULTS = array(
   'MOUNT_PATH' => '/ws/edge',
-  'EDGE_WS_VERSION' => '0.1.6',
   'EDGE_HOST' => 'cwbpub.cr.usgs.gov',
   'EDGE_PORT' => '2060',
   'EDGE_TIMEOUT' => '5'
 );
 $HELP_TEXT = array(
   'MOUNT_PATH' => 'Url path to application',
-  'EDGE_WS_VERSION' => 'Webservice api version',
   'EDGE_HOST' => 'EDGE server hostname or IP address',
   'EDGE_PORT' => 'EDGE server port',
   'EDGE_TIMEOUT' => 'EDGE server socket connect timeout in seconds'
