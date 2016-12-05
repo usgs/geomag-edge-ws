@@ -7,6 +7,49 @@ class Iaga2002OutputFormat {
   static $EMPTY_VALUE = '99999.00';
 
 
+  /**
+   * Run web service query, and generate IAGA2002 output.
+   *
+   * @param $service {GeomagWebService}
+   *     used to make incremental data requests via $service->getData().
+   * @param $query {GeomagQuery}
+   *     the query to run.
+   * @param $metadata {Array}
+   *     associative array of metadata.
+   */
+  public function run ($service, $query, $metadata) {
+    $starttime = $query->starttime;
+    $endtime = $query->endtime;
+    $sampling_period = $query->sampling_period;
+
+
+    header('Content-Type: text/plain');
+
+    echo $this->formatHeaders($query, $metadata);
+    echo $this->formatRequestInfo($query);
+    echo $this->formatDataHeader($query->id, $query->elements);
+
+    // default to one day at a time
+    $delta = 24 * 3600;
+    if ($sampling_period === 1) {
+      // six hours at a time for seconds
+      $delta = 6 * 3600;
+    }
+    $time = $starttime;
+    while ($time <= $endtime) {
+      $nexttime = min($time + $delta - $sampling_period, $endtime);
+
+      $query->starttime = $time;
+      $query->endtime = $nexttime;
+
+      $data = $service->getData($query);
+      echo $this->formatData($data, $query);
+      $data = null;
+
+      $time = $nexttime + $sampling_period;
+    }
+  }
+
   public function output($data, $query, $metadata) {
     header('Content-Type: text/plain');
 

@@ -9,7 +9,7 @@ include_once $LIB_DIR . '/classes/WebService.class.php';
 
 class GeomagWebService extends WebService {
 
-  const VERSION = '0.1.3';
+  const VERSION = '{{VERSION}}';
 
   public $waveserver;
   public $metadata;
@@ -38,14 +38,42 @@ class GeomagWebService extends WebService {
       $this->error(self::BAD_REQUEST, $e->getMessage());
     }
 
+    // validate requested interval.
+    $interval = $query->endtime - $query->starttime;
+    $format = $query->format;
+    $sampling_period = $query->sampling_period;
+
+    $requested_samples = count($query->elements) * $interval / $sampling_period;
+    if ($format === 'iaga2002') {
+      // streaming supports more samples
+      // 345600 = 4 elements * 24 hours * 3600 samples/hour
+      // 44640 = 31 days * 24 hours/day * 60 samples/hour
+      if ($requested_samples > 345600) {
+        $this->error(self::BAD_REQUEST,
+            'IAGA2002 format is limited to 345600 samples per request');
+      }
+    } else { // json
+      // 172800 = 4 elements * 12 hours * 3600 seconds/hour * 1 sample/second
+      if ($requested_samples > 172800) {
+        $this->error(self::BAD_REQUEST,
+            'JSON format is limited to 172800 samples per request');
+      }
+    }
+
     try {
-      $data = $this->getData($query);
+      // open socket to waveserver,
+      // so errors connecting can be caught before any output
+      $this->waveserver->connect();
+
       if ($query->format === 'iaga2002') {
         $output = new Iaga2002OutputFormat();
+        $output->run($this, $query, $this->metadata);
       } else {
+        // query format is json
+        $data = $this->getData($query);
         $output = new JsonOutputFormat();
+        $output->output($data, $query, $this->metadata);
       }
-      $output->output($data, $query, $this->metadata);
     } catch (Exception $e) {
       $this->error(self::SERVER_ERROR, $e->getMessage());
     }
@@ -60,7 +88,7 @@ class GeomagWebService extends WebService {
    *         associative array of data.
    *         keys are requested elements.
    */
-  protected function getData($query) {
+  public function getData($query) {
     $data = [];
     $times = null;
 
@@ -76,9 +104,12 @@ class GeomagWebService extends WebService {
           $element,
           $query->sampling_period,
           $query->type);
+
       $response = $this->waveserver->get(
           $starttime,
-          $endtime,
+          // when requesting only one sample, need to request following sample
+          // this is trimmed during extend below
+          $endtime + ($starttime === $endtime ? $query->sampling_period : 0),
           $sncl['station'],
           $sncl['network'],
           $sncl['channel'],
