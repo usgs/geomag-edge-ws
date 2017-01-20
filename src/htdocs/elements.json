@@ -139,7 +139,7 @@
     },
     {
       "type": "Feature",
-      "id": "UK2",
+      "id": "UK3",
       "properties": {
         "abbreviation": "T-Fluxgate",
         "name": "Fluxgate Temperature",
@@ -149,7 +149,7 @@
     },
     {
       "type": "Feature",
-      "id": "UK3",
+      "id": "UK2",
       "properties": {
         "abbreviation": "T-Total Field",
         "name": "Total Field Temperature",
