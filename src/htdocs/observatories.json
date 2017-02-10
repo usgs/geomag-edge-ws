@@ -568,6 +568,24 @@
         "type": "Point",
         "coordinates": [19.200, -34.400, 0]
       }
+    },
+
+
+    {
+      "type": "Feature",
+      "id": "KAK",
+      "properties": {
+        "name": "Kakioka",
+        "agency": "JMA",
+        "agency_name": "Japan Meteorological Agency (JMA)",
+        "sensor_orientation": "HDZF",
+        "sensor_sampling_rate": 0.01,
+        "declination_base": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [140.18, 53.77, 36]
+      }
     }
   ]
 }
