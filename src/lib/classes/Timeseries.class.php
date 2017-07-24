@@ -103,7 +103,7 @@ class Timeseries {
     $time = $this->times[0];
 
     // ignore data before start
-    while ($time < $startTime) {
+    while ($i < $size && $time < $startTime) {
       $i = $i + 1;
       $time = $this->times[$i];
     }
