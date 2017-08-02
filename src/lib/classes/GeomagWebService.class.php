@@ -207,6 +207,10 @@ class GeomagWebService extends WebService {
 
     $element = strtoupper($element);
     switch ($element) {
+      case 'E-N':
+      case 'E-E':
+        $channel = $prefix . 'Q' . substr(element, -1);
+        break;
       case 'D':
       case 'E':
       case 'H':

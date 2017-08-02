@@ -126,6 +126,8 @@ class Iaga2002OutputFormat {
     }
     $r = '';
     foreach ($channels as $channel) {
+      if ($channel === 'MQN' or $channel === 'SQN') $channel = 'E-N';
+      if ($channel === 'MQE' or $channel === 'SQE') $channel = 'E-E';
       $r .= '   ' . str_pad($station . $channel, 7);
     }
     return $prefix . $r . $suffix;
