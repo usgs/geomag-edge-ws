@@ -46,6 +46,15 @@ if (!isset($TEMPLATE)) {
   echo '<a href="' . $url . '">' . $url . '</a>';
 ?>
   </dd>
+
+  <dt>BOU electric field data for current UTC day in IAGA2002 format</dt>
+  <dd>
+<?php
+  $url = $HOST_URL_PREFIX . $MOUNT_PATH . '/?id=BOU&elements=E-N,E-E';
+  echo '<a href="' . $url . '">' . $url . '</a>';
+?>
+  </dd>
+
 </dl>
 
 
@@ -115,6 +124,13 @@ if (!isset($TEMPLATE)) {
   <dd>
     Comma separated list of requested elements.<br/>
     Default: <code>X,Y,Z,F</code><br/>
+    Valid values:
+      <code>X</code>,
+      <code>Y</code>,
+      <code>Z</code>,
+      <code>F</code>,
+      <code>E-N</code>,
+      <code>E-E</code>
   </dd>
 
   <dt>sampling_period</dt>
