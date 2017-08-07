@@ -50,7 +50,7 @@ if (!isset($TEMPLATE)) {
   <dt>BOU electric field data for current UTC day in IAGA2002 format</dt>
   <dd>
 <?php
-  $url = $HOST_URL_PREFIX . $MOUNT_PATH . '/?id=BOU&format=json&elements=E-N,E-E';
+  $url = $HOST_URL_PREFIX . $MOUNT_PATH . '/?id=BOU&elements=E-N,E-E';
   echo '<a href="' . $url . '">' . $url . '</a>';
 ?>
   </dd>
