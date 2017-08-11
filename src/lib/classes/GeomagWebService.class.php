@@ -48,6 +48,10 @@ class GeomagWebService extends WebService {
       // streaming supports more samples
       // 345600 = 4 elements * 24 hours * 3600 samples/hour
       // 44640 = 31 days * 24 hours/day * 60 samples/hour
+      if (count($query->elements) > 4){
+        $this->error(self::BAD_REQUEST,
+            'IAGA2002 format is limited to 4 elements per request');
+      }
       if ($requested_samples > 345600) {
         $this->error(self::BAD_REQUEST,
             'IAGA2002 format is limited to 345600 samples per request');

@@ -7,6 +7,8 @@ include_once $LIB_DIR . '/classes/GeomagWebService.class.php';
 
 if (!isset($TEMPLATE)) {
   // any parameters
+  $validElements = array('E-E','E-N','D','E','H','F','G','SQ','SV','DIST','DST','UK1','UK2','UK3','UK4','X','Y','Z');
+  sort($validElements);
   $metadata = array();
   $json = json_decode(file_get_contents('observatories.json'), true);
   foreach ($json['features'] as $obs) {
@@ -125,12 +127,11 @@ if (!isset($TEMPLATE)) {
     Comma separated list of requested elements.<br/>
     Default: <code>X,Y,Z,F</code><br/>
     Valid values:
-      <code>X</code>,
-      <code>Y</code>,
-      <code>Z</code>,
-      <code>F</code>,
-      <code>E-N</code>,
-      <code>E-E</code>
+    <?php
+            echo '<code>' .
+                implode('</code>, <code>', array_values($validElements)) .
+                '</code>';
+    ?>
   </dd>
 
   <dt>sampling_period</dt>
