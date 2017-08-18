@@ -48,10 +48,6 @@ class GeomagWebService extends WebService {
       // streaming supports more samples
       // 345600 = 4 elements * 24 hours * 3600 samples/hour
       // 44640 = 31 days * 24 hours/day * 60 samples/hour
-      if (count($query->elements) > 4){
-        $this->error(self::BAD_REQUEST,
-            'IAGA2002 format is limited to 4 elements per request');
-      }
       if ($requested_samples > 345600) {
         $this->error(self::BAD_REQUEST,
             'IAGA2002 format is limited to 345600 samples per request');
@@ -211,9 +207,11 @@ class GeomagWebService extends WebService {
 
     $element = strtoupper($element);
     switch ($element) {
-      case 'E-N':
       case 'E-E':
-        $channel = $prefix . 'Q' . substr(element, -1);
+        $channel = $prefix . 'QE';
+        break;
+      case 'E-N':
+        $channel = $prefix . 'QN';
         break;
       case 'D':
       case 'E':
@@ -328,6 +326,10 @@ class GeomagWebService extends WebService {
     if ($query->elements === null) {
       // default when not specified
       $query->elements = array('X', 'Y', 'Z', 'F');
+    }
+    //
+    if (count($query->elements) > 4 && $query->format === 'iaga2002'){
+      throw new Exception('IAGA2002 format is limited to 4 elements per request');
     }
 
     return $query;
