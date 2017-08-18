@@ -207,6 +207,12 @@ class GeomagWebService extends WebService {
 
     $element = strtoupper($element);
     switch ($element) {
+      case 'E-E':
+        $channel = $prefix . 'QE';
+        break;
+      case 'E-N':
+        $channel = $prefix . 'QN';
+        break;
       case 'D':
       case 'E':
       case 'H':
@@ -320,6 +326,10 @@ class GeomagWebService extends WebService {
     if ($query->elements === null) {
       // default when not specified
       $query->elements = array('X', 'Y', 'Z', 'F');
+    }
+    //
+    if (count($query->elements) > 4 && $query->format === 'iaga2002'){
+      throw new Exception('IAGA2002 format is limited to 4 elements per request');
     }
 
     return $query;

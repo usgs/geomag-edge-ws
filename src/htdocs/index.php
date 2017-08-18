@@ -7,6 +7,25 @@ include_once $LIB_DIR . '/classes/GeomagWebService.class.php';
 
 if (!isset($TEMPLATE)) {
   // any parameters
+  $validElements = array(
+      'D',
+      'DIST',
+      'DST',
+      'E',
+      'E-E',
+      'E-N',
+      'F',
+      'G',
+      'H',
+      'SQ',
+      'SV',
+      'UK1',
+      'UK2',
+      'UK3',
+      'UK4',
+      'X',
+      'Y',
+      'Z');
   $metadata = array();
   $json = json_decode(file_get_contents('observatories.json'), true);
   foreach ($json['features'] as $obs) {
@@ -46,6 +65,15 @@ if (!isset($TEMPLATE)) {
   echo '<a href="' . $url . '">' . $url . '</a>';
 ?>
   </dd>
+
+  <dt>BOU electric field data for current UTC day in IAGA2002 format</dt>
+  <dd>
+<?php
+  $url = $HOST_URL_PREFIX . $MOUNT_PATH . '/?id=BOU&elements=E-N,E-E';
+  echo '<a href="' . $url . '">' . $url . '</a>';
+?>
+  </dd>
+
 </dl>
 
 
@@ -115,6 +143,12 @@ if (!isset($TEMPLATE)) {
   <dd>
     Comma separated list of requested elements.<br/>
     Default: <code>X,Y,Z,F</code><br/>
+    Valid values:
+<?php
+        echo '<code>' .
+            implode('</code>, <code>', array_values($validElements)) .
+            '</code>';
+?>
   </dd>
 
   <dt>sampling_period</dt>
