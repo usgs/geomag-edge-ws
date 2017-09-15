@@ -329,7 +329,7 @@
       "type": "Feature",
       "id": "BLC",
       "properties": {
-        "name": "Bake Lake",
+        "name": "Baker Lake",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -489,7 +489,7 @@
       "type": "Feature",
       "id": "STJ",
       "properties": {
-        "name": "Saint John's",
+        "name": "St Johns",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
@@ -521,7 +521,7 @@
       "type": "Feature",
       "id": "YKC",
       "properties": {
-        "name": "Yellow Knife",
+        "name": "Yellowknife",
         "agency": "GSC",
         "agency_name": "Geological Survey of Canada (GSC)",
         "sensor_orientation": "XYZF",
