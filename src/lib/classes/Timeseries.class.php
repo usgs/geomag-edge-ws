@@ -99,13 +99,14 @@ class Timeseries {
     }
 
     $delta = ($delta == null ? $this->estimateDelta() : $delta);
-    $i = 0;
+
     $time = $this->times[0];
+    $i = 1;
 
     // ignore data before start
     while ($i < $size && $time < $startTime) {
-      $i = $i + 1;
       $time = $this->times[$i];
+      $i = $i + 1;
     }
 
     // leading gap, will be filled by fillGaps
