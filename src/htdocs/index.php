@@ -73,6 +73,7 @@ if (!isset($TEMPLATE)) {
   echo '<a href="' . $url . '">' . $url . '</a>';
 ?>
   </dd>
+  <a href="Examples.php">See more examples</a>
 
 </dl>
 
