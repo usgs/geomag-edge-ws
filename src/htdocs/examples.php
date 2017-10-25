@@ -1,43 +1,7 @@
 <?php
 include_once '../conf/config.inc.php';
-include_once $LIB_DIR . '/classes/WaveServer.class.php';
-include_once $LIB_DIR . '/classes/GeomagWebService.class.php';
 
 if (!isset($TEMPLATE)) {
-  // any parameters
-  $validElements = array(
-      'D',
-      'DIST',
-      'DST',
-      'E',
-      'E-E',
-      'E-N',
-      'F',
-      'G',
-      'H',
-      'SQ',
-      'SV',
-      'UK1',
-      'UK2',
-      'UK3',
-      'UK4',
-      'X',
-      'Y',
-      'Z');
-  $metadata = array();
-  $json = json_decode(file_get_contents('observatories.json'), true);
-  foreach ($json['features'] as $obs) {
-    $metadata[$obs['id']] = $obs;
-  }
-
-  if (count($_GET) != 0) {
-    // if there are url parameters, process request
-    $waveserver = new WaveServer($EDGE_HOST, $EDGE_PORT, $EDGE_TIMEOUT);
-    $geomagService = new GeomagWebService($waveserver, $metadata);
-    $geomagService->run();
-    exit();
-  }
-
   $TITLE = 'More Examples';
   include 'template.inc.php';
 }
