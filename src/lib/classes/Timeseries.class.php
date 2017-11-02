@@ -100,13 +100,12 @@ class Timeseries {
 
     $delta = ($delta == null ? $this->estimateDelta() : $delta);
 
-    $time = $this->times[0];
-    $i = 1;
-
     // ignore data before start
-    while ($i < $size && $time < $startTime) {
+    for ($i = 0; $i < $size; $i++) {
       $time = $this->times[$i];
-      $i = $i + 1;
+      if ($time >= $startTime) {
+        break;
+      }
     }
 
     // leading gap, will be filled by fillGaps
