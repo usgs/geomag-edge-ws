@@ -65,6 +65,11 @@ class GeomagWebService extends WebService {
       // so errors connecting can be caught before any output
       $this->waveserver->connect();
 
+      // only cache for 5 minutes
+      global $APP_DIR;
+      $CACHE_MAXAGE = 300;
+      include $APP_DIR . '/lib/cache.inc.php';
+
       if ($query->format === 'iaga2002') {
         $output = new Iaga2002OutputFormat();
         $output->run($this, $query, $this->metadata);
