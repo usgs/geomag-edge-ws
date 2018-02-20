@@ -109,7 +109,7 @@
     },
     {
       "type": "Feature",
-      "id": "MQN",
+      "id": "E-N",
       "properties": {
         "abbreviation": "E-N",
         "name": "E-Field North",
@@ -119,7 +119,7 @@
     },
     {
       "type": "Feature",
-      "id": "MQE",
+      "id": "E-E",
       "properties": {
         "abbreviation": "E-E",
         "name": "E-Field East",
