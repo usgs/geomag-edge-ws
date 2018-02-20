@@ -59,7 +59,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 16000
+        "declination_base": 10589
       },
       "geometry": {
         "type": "Point",
@@ -75,7 +75,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 16000
+        "declination_base": 10589
       },
       "geometry": {
         "type": "Point",
@@ -91,7 +91,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 1530
+        "declination_base": 215772
       },
       "geometry": {
         "type": "Point",
@@ -107,7 +107,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 16876
+        "declination_base": 12151
       },
       "geometry": {
         "type": "Point",
@@ -123,7 +123,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 16876
+        "declination_base": 12151
       },
       "geometry": {
         "type": "Point",
@@ -139,7 +139,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 13200
+        "declination_base": 12755
       },
       "geometry": {
         "type": "Point",
@@ -155,7 +155,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 13200
+        "declination_base": 12755
       },
       "geometry": {
         "type": "Point",
@@ -171,7 +171,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 210942
+        "declination_base": 209690
       },
       "geometry": {
         "type": "Point",
@@ -187,7 +187,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 9250
+        "declination_base": 8097
       },
       "geometry": {
         "type": "Point",
@@ -203,7 +203,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 1157
+        "declination_base": 764
       },
       "geometry": {
         "type": "Point",
@@ -219,7 +219,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 6920
+        "declination_base": 5982
       },
       "geometry": {
         "type": "Point",
@@ -235,7 +235,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 12133
+        "declination_base": 9547
       },
       "geometry": {
         "type": "Point",
@@ -251,7 +251,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 13974
+        "declination_base": 7386
       },
       "geometry": {
         "type": "Point",
@@ -267,7 +267,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 16523
+        "declination_base": 12349
       },
       "geometry": {
         "type": "Point",
@@ -283,7 +283,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 209800
+        "declination_base": 208439
       },
       "geometry": {
         "type": "Point",
@@ -299,7 +299,7 @@
         "agency_name": "United States Geological Survey (USGS)",
         "sensor_orientation": "HDZF",
         "sensor_sampling_rate": 0.01,
-        "declination_base": 7258
+        "declination_base": 5863
       },
       "geometry": {
         "type": "Point",
