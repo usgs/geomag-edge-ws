@@ -203,10 +203,10 @@ class Iaga2002OutputFormat {
     return WebService::formatISO8601($time, ' ', '') .
         ' ' . str_pad($doy, 3, '0', STR_PAD_LEFT) .
         '   ' .
-        str_pad($values[0], 10, ' ', STR_PAD_LEFT) .
-        str_pad($values[1], 10, ' ', STR_PAD_LEFT) .
-        str_pad($values[2], 10, ' ', STR_PAD_LEFT) .
-        str_pad($values[3], 10, ' ', STR_PAD_LEFT) .
+        ' ' . str_pad($values[0], 9, ' ', STR_PAD_LEFT) .
+        ' ' . str_pad($values[1], 9, ' ', STR_PAD_LEFT) .
+        ' ' . str_pad($values[2], 9, ' ', STR_PAD_LEFT) .
+        ' ' . str_pad($values[3], 9, ' ', STR_PAD_LEFT) .
         "\n";
   }
 
