@@ -75,7 +75,7 @@ if (!isset($TEMPLATE)) {
   </dd>
 </dl>
 <p>
-  <a href="Examples.php">See more examples</a>
+  <a href="examples.php">See more examples</a>
 </p>
 
 <h2>Request Limits</h2>
