@@ -1,6 +1,6 @@
 {
   "name": "geomag-edge-ws",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Geomag timeseries web service",
   "main": "Gruntfile.js",
   "repository": {
@@ -48,6 +48,6 @@
     "sinon": "1.16.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "4.5.0"
   }
 }
