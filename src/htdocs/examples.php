@@ -88,4 +88,11 @@ if (!isset($TEMPLATE)) {
 ?>
   </dd>
 
+  <dt>Satellite data from observatory BOU in HEZF:</dt>
+  <dd>
+<?php
+  $url = $HOST_URL_PREFIX . $MOUNT_PATH . '/?id=BOU&elements=H,E,Z,F&type=R1';
+  echo '<a href="' . $url . '">' . $url . '</a>';
+?>
+  </dd>
 </dl>
