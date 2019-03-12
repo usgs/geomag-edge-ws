@@ -164,6 +164,22 @@
     },
     {
       "type": "Feature",
+      "id": "FDT",
+      "properties": {
+        "name": "Fredericksburg Test",
+        "agency": "USGS",
+        "agency_name": "United States Geological Survey (USGS)",
+        "sensor_orientation": "HDZF",
+        "sensor_sampling_rate": 0.01,
+        "declination_base": 209690
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [282.627, 38.205, 69]
+      }
+    },
+    {
+      "type": "Feature",
       "id": "FRD",
       "properties": {
         "name": "Fredericksburg",
