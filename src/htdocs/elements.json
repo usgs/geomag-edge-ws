@@ -22,6 +22,24 @@
     },
     {
       "type": "Feature",
+      "id": "X",
+      "properties": {
+        "name": "Geographic North Magnitude",
+        "units": "nT"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
+      "id": "Y",
+      "properties": {
+        "name": "Geographic East Magnitude",
+        "units": "nT"
+      },
+      "geometry": null
+    },
+    {
+      "type": "Feature",
       "id": "D",
       "properties": {
         "name": "Declination (deci-arcminute)",
@@ -53,29 +71,10 @@
       "properties": {
         "abbreviation": "ΔF",
         "name": "Delta F",
-        "units": "nT"
+        "units": "ΔnT"
       },
       "geometry": null
     },
-    {
-      "type": "Feature",
-      "id": "X",
-      "properties": {
-        "name": "Geographic North Magnitude",
-        "units": "nT"
-      },
-      "geometry": null
-    },
-    {
-      "type": "Feature",
-      "id": "Y",
-      "properties": {
-        "name": "Geographic East Magnitude",
-        "units": "nT"
-      },
-      "geometry": null
-    },
-
 
     {
       "type": "Feature",
