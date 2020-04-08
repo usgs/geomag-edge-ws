@@ -158,7 +158,7 @@ class GeomagWebService extends WebService {
 
       // scale values
       $data[$element]['values'] = array_map(function ($v) {
-        return ($v == null ? null : $v / 1000);
+        return ($v === null ? null : $v / 1000);
       }, $timeseries->data);
     }
 
